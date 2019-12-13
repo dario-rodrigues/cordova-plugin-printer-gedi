@@ -36,6 +36,8 @@
 
     <!-- android -->
     <platform name="android">
+	    <framework src="build.gradle" custom="true" type="gradleReference" />
+		
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="Printer">
                 <param name="android-package" value="cordova-plugin-printer-gedi"/>
