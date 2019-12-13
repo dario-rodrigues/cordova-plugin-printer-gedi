@@ -43,9 +43,6 @@ import br.com.gertec.gedi.GEDI;
 import br.com.gertec.gedi.enums.GEDI_PRNTR_e_BarCodeType;
 import br.com.gertec.gedi.interfaces.IGEDI;
 import br.com.gertec.gedi.interfaces.IPRNTR;
-import ger7.com.br.pos7api.POS7API;
-import ger7.com.br.pos7api.ParamIn;
-import ger7.com.br.pos7api.ParamOut;
 
 public class Printer extends CordovaPlugin {
 
