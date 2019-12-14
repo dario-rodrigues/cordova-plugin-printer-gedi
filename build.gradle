@@ -1,5 +1,0 @@
-apply plugin: 'com.android.application'
-
-dependencies {
-    implementation( name : 'src/android/payment-1.14.10.181016' , ext : 'aar' )
-}
