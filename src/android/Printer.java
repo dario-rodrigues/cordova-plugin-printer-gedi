@@ -77,7 +77,7 @@ public class Printer extends CordovaPlugin {
          @Override
          public void run() {
             try {
-			   iGedi = GEDI.getInstance(Printer.this);
+			   iGedi = GEDI.getInstance(this);
 			   
                IPRNTR iPrntr = iGedi.getPRNTR();
 
