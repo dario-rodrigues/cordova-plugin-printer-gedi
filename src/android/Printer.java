@@ -81,15 +81,10 @@ public class Printer extends Activity {
 			   
                IPRNTR iPrntr = iGedi.getPRNTR();
 
-               tPRNTR.DrawPicture(getApplicationContext(), iPrntr,"CENTER",0,50,160,
-                       "logo");
-
-               tPRNTR.DrawBlankLine(20, iPrntr);
-
                tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
                        false, false, false, 17, viaCliente);
 
-               tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
+               /*tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
                        true, false, false, 17, "______________________________________");
 
                tPRNTR.DrawBlankLine(10, iPrntr);
@@ -108,7 +103,7 @@ public class Printer extends Activity {
                tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
                        true, false, false, 20, "SENHA: " + Integer.toString(senha) );
 
-               tPRNTR.DrawBlankLine(140, iPrntr);
+               tPRNTR.DrawBlankLine(140, iPrntr);*/
             }catch (Exception e){
             }
          }
