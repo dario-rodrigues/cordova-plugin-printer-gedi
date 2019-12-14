@@ -45,6 +45,7 @@
             </feature>
         </config-file>
 
+        <source-file src="src/android/tPRNTR.java" target-dir="src/cordova/plugin/printer/gedi" />   
 		<source-file src="src/android/Printer.java" target-dir="src/cordova/plugin/printer/gedi" />
     </platform>
 </plugin>
