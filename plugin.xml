@@ -36,15 +36,15 @@
 
     <!-- android -->
     <platform name="android">
-	    <framework src="src/android/payment-1.14.10.181016.aar" />
-		
-        <config-file target="res/xml/config.xml" parent="/*">
+	    <framework src="src/android/build.gradle" custom="true" type="gradleReference"/>
+        <resource-file src="src/android/payment-1.14.10.181016.aar" target="src/cordova/plugin/printer/gedi/payment-1.14.10.181016.aar"/>
+        
+	    <config-file target="res/xml/config.xml" parent="/*">
             <feature name="Printer">
                 <param name="android-package" value="cordova-plugin-printer-gedi"/>
             </feature>
         </config-file>
 
-		<source-file src="src/android/payment-1.14.10.181016.aar" target-dir="src/cordova/plugin/printer/gedi" />
-        <source-file src="src/android/Printer.java" target-dir="src/cordova/plugin/printer/gedi" />
+		<source-file src="src/android/Printer.java" target-dir="src/cordova/plugin/printer/gedi" />
     </platform>
 </plugin>
