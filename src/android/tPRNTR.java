@@ -1,20 +1,4 @@
-/*======================================= GERTEC =======================================
-  File          : tPRNTR.java
-  Project       : Gedi Test
-  Platform      : Android
-  Device        : Android POS devices
-  Creation Date : 31/Aug/2018
-  Author        : Vinícius Moreira
-
-  Description   : tPRNTR.java:
-                   - Android POS devices printer test functions parameters treatment
-  ======================================== HISTORY ========================================
-  When       Who                   What
-  ---------  --------------------  --------------------------------------------------------
-  31/08/18   Vinícius Moreira      - Initial version
-  =========================================================================================*/
-
-package com.example.massa.gfood;
+package cordova.plugin.printer.gedi;
 
 import android.content.Context;
 import android.graphics.Bitmap;
