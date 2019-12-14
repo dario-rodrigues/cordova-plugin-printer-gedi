@@ -37,9 +37,7 @@
     <!-- android -->
     <platform name="android">
 	    <framework src="src/android/build.gradle" custom="true" type="gradleReference"/>
-        <framework src="com.android.support:support-v4:$ANDROID_SUPPORT_V4_VERSION"/>
         <lib-file src="src/android/payment-1.14.10.181016.aar"/>
-        <preference name="ANDROID_SUPPORT_V4_VERSION" default="27.+"/>
         
 	    <config-file target="res/xml/config.xml" parent="/*">
             <feature name="Printer">
