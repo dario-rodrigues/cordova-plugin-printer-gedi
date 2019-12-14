@@ -7,7 +7,7 @@ repositories{
 
 dependencies {
     compile(name:'payment-1.14.10.181016', ext:'aar')
-	implementation 'com.android.support:appcompat-v7:22.0.0'
+	compile("com.android.support:appcompat-v7:22.2.0")
 }
 
 android {
