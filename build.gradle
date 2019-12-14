@@ -1,4 +1,0 @@
-dependencies {
-    compile 'com.android.support:support-v4:+'
-    compile(name:'payment-1.14.10.181016', ext:'aar')
-}
