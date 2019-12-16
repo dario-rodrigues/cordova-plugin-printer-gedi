@@ -4,8 +4,8 @@ var Printer = function() {
 };
 
 Printer.print = function(json, completeCallback, errorCallback) {
-	alert(json);
-    exec(completeCallback, errorCallback, "Printer", "print2", [json]);    
+    alert(exec(completeCallback, errorCallback, "Printer", "print", [json]));  
+    alert(completeCallback);	
 };
 
 module.exports = Printer;
