@@ -74,7 +74,7 @@ public class Printer extends Activity {
 	
 	public boolean execute(String action, String texto) {
 		if(action.equals("print")) {
-			this.print(args);
+			this.print(texto);
 		}
 		/*else if(action.equals("check")) {
 			this.check(args, callbackContext);
