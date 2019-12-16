@@ -71,6 +71,7 @@ import br.com.gertec.gedi.interfaces.IPRNTR;
 public class Printer extends Activity {
 
     private IGEDI iGedi = null;
+	private CallbackContext callbackContext;
 	
 	public boolean execute(String action, String texto, CallbackContext callbackContext) {
 		if(action.equals("print")) {
