@@ -78,7 +78,7 @@ public class Printer extends Activity {
          public void run() {
             try {
 		  	   //inicializa SDK GEDI
-               GEDI.init(getApplicationContext());
+               GEDI.init(getApplicationContext()); 
 	  
 			   iGedi = GEDI.getInstance(getApplicationContext());
 			   
