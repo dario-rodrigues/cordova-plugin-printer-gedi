@@ -71,8 +71,31 @@ import br.com.gertec.gedi.interfaces.IPRNTR;
 public class Printer extends Activity {
 
     private IGEDI iGedi = null;
+	
+	public boolean execute(String action, String texto) {
+		if(action.equals("print")) {
+			this.print(args);
+		}
+		/*else if(action.equals("check")) {
+			this.check(args, callbackContext);
+		}
+		else if(action.equals("receiver")) {
+			this.receiver(args, callbackContext);
+		}
+		else if(action.equals("unReceiver")) {
+			this.receiver(args, callbackContext);
+		}
+		else if(action.equals("getExtras")) {
+			this.getExtras(callbackContext);
+		}
+		else if(action.equals("getExtra")) {
+			this.getExtra(args, callbackContext);
+		}*/
 
-    public void print (final String viaCliente) {
+        return true;
+    }
+
+    private void print (final String viaCliente) {
         Thread t = new Thread(){
          @Override
          public void run() {
@@ -107,7 +130,10 @@ public class Printer extends Activity {
                        true, false, false, 20, "SENHA: " + Integer.toString(senha) );
 
                tPRNTR.DrawBlankLine(140, iPrntr);*/
+			   
+			   return 'ok';
             }catch (Exception e){
+				return e.getMessage();
             }
          }
       };
