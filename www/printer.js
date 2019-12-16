@@ -100,8 +100,8 @@ Printer.hide = function() {
     exec(null, null, "Printer", "hide", []);
 };
 
-Printer.print = function() {
-    exec(null, null, "Printer", "print", []);
+Printer.print = function(json, success) {
+    exec(success, null, "Printer", "print", [json]);
 };
 
 Printer.isVisible = false;
