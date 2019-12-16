@@ -75,7 +75,9 @@ public class Printer extends Activity {
 	
 	public boolean execute(String action, String texto, CallbackContext callbackContext) {
 		if(action.equals("print")) {
-			this.print(texto,callbackContext);
+			//this.print(texto,callbackContext);
+			callbackContext.success();
+			return true;
 		}
 		/*else if(action.equals("check")) {
 			this.check(args, callbackContext);
@@ -93,7 +95,8 @@ public class Printer extends Activity {
 			this.getExtra(args, callbackContext);
 		}*/
 
-        return true;
+		callbackContext.error(action + " is not a supported action");
+        return false;
     }
 
     private void print (String texto, CallbackContext callback) {
