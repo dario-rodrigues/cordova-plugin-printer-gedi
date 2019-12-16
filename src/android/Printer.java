@@ -100,15 +100,16 @@ public class Printer extends Activity {
          @Override
          public void run() {
             try {
+			   callback.success(texto);
 		  	   //inicializa SDK GEDI
-               GEDI.init(getApplicationContext()); 
+               /*GEDI.init(getApplicationContext()); 
 	  
 			   iGedi = GEDI.getInstance(getApplicationContext());
 			   
                IPRNTR iPrntr = iGedi.getPRNTR();
 
                tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
-                       false, false, false, 17, texto);
+                       false, false, false, 17, texto);*/
 
                /*tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
                        true, false, false, 17, "______________________________________");
