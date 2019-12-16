@@ -130,10 +130,7 @@ public class Printer extends Activity {
                        true, false, false, 20, "SENHA: " + Integer.toString(senha) );
 
                tPRNTR.DrawBlankLine(140, iPrntr);*/
-			   
-			   return true;
-            }catch (Exception e){
-				return e.getMessage();
+            }catch (Exception e){			
             }
          }
       };
