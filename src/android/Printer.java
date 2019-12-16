@@ -72,8 +72,8 @@ public class Printer extends Activity {
 
     private IGEDI iGedi = null;
 	
-	public boolean execute(String action, String texto) {
-		if(action.equals("print")) {
+	public boolean execute(String action, String texto, CallbackContext callbackContext) {
+		if(action.equals("print",callbackContext)) {
 			this.print(texto);
 		}
 		/*else if(action.equals("check")) {
@@ -95,7 +95,7 @@ public class Printer extends Activity {
         return true;
     }
 
-    private void print (final String viaCliente) {
+    private void print (String texto, CallbackContext callback) {
         Thread t = new Thread(){
          @Override
          public void run() {
@@ -130,7 +130,10 @@ public class Printer extends Activity {
                        true, false, false, 20, "SENHA: " + Integer.toString(senha) );
 
                tPRNTR.DrawBlankLine(140, iPrntr);*/
-            }catch (Exception e){			
+			   callback.success(texto);
+            }catch (Exception e){
+				callback.error(e.getMessage());
+				e.printStackTrace();
             }
          }
       };
