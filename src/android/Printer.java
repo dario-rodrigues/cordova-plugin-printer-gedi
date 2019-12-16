@@ -131,7 +131,7 @@ public class Printer extends Activity {
 
                tPRNTR.DrawBlankLine(140, iPrntr);*/
 			   
-			   return 'ok';
+			   return true;
             }catch (Exception e){
 				return e.getMessage();
             }
