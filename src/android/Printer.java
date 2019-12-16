@@ -21,129 +21,40 @@
 
 package cordova.plugin.printer.gedi;
 
-import org.apache.cordova.CallbackContext;
-import org.apache.cordova.CordovaPlugin;
-import org.apache.cordova.PluginResult;
-
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
+import android.content.Context;
+import android.view.inputmethod.InputMethodManager;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ToggleButton;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Locale;
-
+import org.apache.cordova.*;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import br.com.gertec.gedi.GEDI;
-import br.com.gertec.gedi.enums.GEDI_PRNTR_e_Alignment;
-import br.com.gertec.gedi.enums.GEDI_PRNTR_e_BarCodeType;
-import br.com.gertec.gedi.enums.GEDI_PRNTR_e_Status;
-import br.com.gertec.gedi.exceptions.GediException;
-import br.com.gertec.gedi.interfaces.IGEDI;
-import br.com.gertec.gedi.interfaces.IPRNTR;
-import br.com.gertec.gedi.structs.GEDI_PRNTR_st_BarCodeConfig;
-import br.com.gertec.gedi.structs.GEDI_PRNTR_st_PictureConfig;
-import br.com.gertec.gedi.structs.GEDI_PRNTR_st_StringConfig;
+public class Keyboard extends CordovaPlugin {
 
-import br.com.gertec.gedi.GEDI;
-import br.com.gertec.gedi.enums.GEDI_PRNTR_e_BarCodeType;
-import br.com.gertec.gedi.interfaces.IGEDI;
-import br.com.gertec.gedi.interfaces.IPRNTR;
+    @Override
+    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+	Activity activity = this.cordova.getActivity();
+	InputMethodManager imm = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
 
-public class Printer extends Activity {
+	View view;
+	try {
+	    view = (View)webView.getClass().getMethod("getView").invoke(webView);
+	}
+	catch (Exception e){
+	    view = (View)webView;
+	}
 
-    private IGEDI iGedi = null;
-	
-	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-		if(action.equals("print")) {
-			//this.print(texto,callbackContext);
-			callbackContext.success();
-			return true;
-		}
-		/*else if(action.equals("check")) {
-			this.check(args, callbackContext);
-		}
-		else if(action.equals("receiver")) {
-			this.receiver(args, callbackContext);
-		}
-		else if(action.equals("unReceiver")) {
-			this.receiver(args, callbackContext);
-		}
-		else if(action.equals("getExtras")) {
-			this.getExtras(callbackContext);
-		}
-		else if(action.equals("getExtra")) {
-			this.getExtra(args, callbackContext);
-		}*/
-
-		callbackContext.error(action + " is not a supported action");
-        return false;
-    }
-
-    private void print (String texto, CallbackContext callback) {
-        Thread t = new Thread(){
-         @Override
-         public void run() {
-            try {
-			   callback.success(texto);
-		  	   //inicializa SDK GEDI
-               /*GEDI.init(getApplicationContext()); 
-	  
-			   iGedi = GEDI.getInstance(getApplicationContext());
-			   
-               IPRNTR iPrntr = iGedi.getPRNTR();
-
-               tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
-                       false, false, false, 17, texto);*/
-
-               /*tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
-                       true, false, false, 17, "______________________________________");
-
-               tPRNTR.DrawBlankLine(10, iPrntr);
-
-               tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
-                       true, false, false, 17, pedidoComprovante);
-
-               tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
-                       true, false, false, 17, getResources().getString(R.string.nota));
-
-               tPRNTR.DrawBarCode( iPrntr, GEDI_PRNTR_e_BarCodeType.QR_CODE, 300, 300, "www.ger7.com.br" );
-
-               Random rn = new Random();
-               int senha = rn.nextInt(1000) + 1;
-
-               tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
-                       true, false, false, 20, "SENHA: " + Integer.toString(senha) );
-
-               tPRNTR.DrawBlankLine(140, iPrntr);*/
-			   callback.success(texto);
-            }catch (Exception e){
-				callback.error(e.getMessage());
-				e.printStackTrace();
-            }
-         }
-      };
-      t.start();
+	if("show".equals(action)){
+	    imm.showSoftInput(view, 0);
+	    callbackContext.success();
+	    return true;
+	}
+	else if("hide".equals(action)){
+	    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+	    callbackContext.success();
+	    return true;
+	}
+	callbackContext.error(action + " is not a supported action");
+	return false;
     }
 }
