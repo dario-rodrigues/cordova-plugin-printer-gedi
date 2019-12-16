@@ -23,88 +23,88 @@ var argscheck = require('cordova/argscheck'),
     utils = require('cordova/utils'),
     exec = require('cordova/exec');
    
-var Keyboard = function() {
+var Printer = function() {
 };
 
-Keyboard.shrinkView = function(shrink, success) {
+Printer.shrinkView = function(shrink, success) {
     if (shrink !== null && shrink !== undefined) {
-        exec(success, null, "Keyboard", "shrinkView", [shrink]);
+        exec(success, null, "Printer", "shrinkView", [shrink]);
     } else {
-        exec(success, null, "Keyboard", "shrinkView", []);
+        exec(success, null, "Printer", "shrinkView", []);
     }
 };
 
-Keyboard.hideFormAccessoryBar = function(hide, success) {
+Printer.hideFormAccessoryBar = function(hide, success) {
     if (hide !== null && hide !== undefined){
-        exec(success, null, "Keyboard", "hideFormAccessoryBar", [hide]);
+        exec(success, null, "Printer", "hideFormAccessoryBar", [hide]);
     } else {
-        exec(success, null, "Keyboard", "hideFormAccessoryBar", []);
+        exec(success, null, "Printer", "hideFormAccessoryBar", []);
     }
 };
 
-Keyboard.disableScrollingInShrinkView = function(disable, success) {
+Printer.disableScrollingInShrinkView = function(disable, success) {
     if (disable !== null && disable !== undefined) {
-        exec(success, null, "Keyboard", "disableScrollingInShrinkView", [disable]);
+        exec(success, null, "Printer", "disableScrollingInShrinkView", [disable]);
     } else {
-        exec(success, null, "Keyboard", "disableScrollingInShrinkView", []);
+        exec(success, null, "Printer", "disableScrollingInShrinkView", []);
     }
 };
 
-Keyboard.fireOnShow = function() {
-    Keyboard.isVisible = true;
+Printer.fireOnShow = function() {
+    Printer.isVisible = true;
     cordova.fireWindowEvent('keyboardDidShow');
 
-    if(Keyboard.onshow) {
-	Keyboard.onshow();
+    if(Printer.onshow) {
+	Printer.onshow();
     }
 };
 
-Keyboard.fireOnHide = function() {
-    Keyboard.isVisible = false;
+Printer.fireOnHide = function() {
+    Printer.isVisible = false;
     cordova.fireWindowEvent('keyboardDidHide');
 
-    if(Keyboard.onhide) {
-	Keyboard.onhide();
+    if(Printer.onhide) {
+	Printer.onhide();
     }
 };
 
-Keyboard.fireOnHiding = function() {
+Printer.fireOnHiding = function() {
     // Automatic scroll to the top of the page
     // to prevent quirks when using position:fixed elements
     // inside WebKit browsers (iOS specifically).
     // See CB-6444 for context.
-    if (Keyboard.automaticScrollToTopOnHiding) {
+    if (Printer.automaticScrollToTopOnHiding) {
         document.body.scrollLeft = 0;
     }
 
     cordova.fireWindowEvent('keyboardWillHide');
 
-    if(Keyboard.onhiding) {
-	Keyboard.onhiding();
+    if(Printer.onhiding) {
+	Printer.onhiding();
     }
 };
 
-Keyboard.fireOnShowing = function() {
+Printer.fireOnShowing = function() {
     cordova.fireWindowEvent('keyboardWillShow');
 
-    if(Keyboard.onshowing) {
-	Keyboard.onshowing();
+    if(Printer.onshowing) {
+	Printer.onshowing();
     }
 };
 
-Keyboard.show = function() {
-    exec(null, null, "Keyboard", "show", []);
+Printer.show = function() {
+    exec(null, null, "Printer", "show", []);
 };
 
-Keyboard.hide = function() {
-    exec(null, null, "Keyboard", "hide", []);
+Printer.hide = function() {
+    exec(null, null, "Printer", "hide", []);
 };
 
-Keyboard.print = function() {
-    exec(null, null, "Keyboard", "print", []);
+Printer.print = function() {
+    exec(null, null, "Printer", "print", []);
 };
 
-Keyboard.isVisible = false;
-Keyboard.automaticScrollToTopOnHiding = false;
+Printer.isVisible = false;
+Printer.automaticScrollToTopOnHiding = false;
 
-module.exports = Keyboard;
+module.exports = Printer;
