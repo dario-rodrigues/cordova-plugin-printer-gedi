@@ -52,6 +52,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import br.com.gertec.gedi.GEDI;
 import br.com.gertec.gedi.enums.GEDI_PRNTR_e_Alignment;
 import br.com.gertec.gedi.enums.GEDI_PRNTR_e_BarCodeType;
@@ -71,7 +74,6 @@ import br.com.gertec.gedi.interfaces.IPRNTR;
 public class Printer extends Activity {
 
     private IGEDI iGedi = null;
-	private CallbackContext callbackContext;
 	
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 		if(action.equals("print")) {
