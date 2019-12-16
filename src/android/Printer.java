@@ -73,7 +73,7 @@ public class Printer extends Activity {
     private IGEDI iGedi = null;
 	private CallbackContext callbackContext;
 	
-	public boolean execute(String action, String texto, CallbackContext callbackContext) {
+	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 		if(action.equals("print")) {
 			//this.print(texto,callbackContext);
 			callbackContext.success();
