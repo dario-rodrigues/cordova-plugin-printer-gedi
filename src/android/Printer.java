@@ -73,8 +73,8 @@ public class Printer extends Activity {
     private IGEDI iGedi = null;
 	
 	public boolean execute(String action, String texto, CallbackContext callbackContext) {
-		if(action.equals("print",callbackContext)) {
-			this.print(texto);
+		if(action.equals("print")) {
+			this.print(texto,callbackContext);
 		}
 		/*else if(action.equals("check")) {
 			this.check(args, callbackContext);
