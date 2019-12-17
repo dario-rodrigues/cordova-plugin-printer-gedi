@@ -84,7 +84,7 @@ public class gedi extends Activity
 			try 
 			{
 				t.start( );
-				callbackContext.success( texto )
+				callbackContext.success( texto );
 			} catch ( Exception ex )
 			{
 				ex.printStackTrace( );
