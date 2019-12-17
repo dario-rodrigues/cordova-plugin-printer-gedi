@@ -54,16 +54,7 @@ public class gedi extends CordovaPlugin
 	IPRNTR iprntr;
 	Activity Atividade;
 	
-	@Override
-	protected void onCreate( Bundle savedInstanceState ) 
-	{
-		super.onCreate( savedInstanceState );
-		Atividade = new Activity( );
-		GEDI.init( this );
-		iGedi = GEDI.getInstance( Atividade.getApplicationContext( ) );
-	}
-
-    public boolean execute( String action, JSONArray args, CallbackContext callbackContext ) throws JSONException 
+	public boolean execute( String action, JSONArray args, CallbackContext callbackContext ) throws JSONException 
 	{
         if ( action.equals( "print" ) ) 
 		{
@@ -83,10 +74,16 @@ public class gedi extends CordovaPlugin
 			{
 				@Override
 				public void run( ) 
-				{				   
+				{
+					   Atividade = new Activity( );
+					   
+					   GEDI.init( this );
+					   
+					   iGedi = GEDI.getInstance( Atividade.getApplicationContext( ) );
+					   
 					   IPRNTR iPrntr = iGedi.getPRNTR( );
 
-					   tPRNTR.DrawString( gedi.this, iPrntr, "CENTER", 0, 0, "NORMAL", false, false, false, 17, texto );
+					   tPRNTR.DrawString( Atividade.getApplicationContext( ), iPrntr, "CENTER", 0, 0, "NORMAL", false, false, false, 17, texto );
 
 					   /*tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
 							   true, false, false, 17, "______________________________________");
