@@ -84,7 +84,7 @@ public class gedi extends CordovaPlugin
 						callback.error( ex.getMessage( ) );
 					}
 				}
-			}
+			};
 			
 			t.start( );            
         } else 
