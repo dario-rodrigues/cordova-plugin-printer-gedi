@@ -41,7 +41,7 @@
         
 	    <config-file target="res/xml/config.xml" parent="/*">
             <feature name="Printer">
-                <param name="android-package" value="cordova-plugin-printer-gedi"/>
+                <param name="android-package" value="cordova-plugin-printer-gedi.Printer"/>
             </feature>
         </config-file>
 
