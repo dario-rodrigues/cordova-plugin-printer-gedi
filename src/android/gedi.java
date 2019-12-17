@@ -52,11 +52,14 @@ public class gedi extends CordovaPlugin
 {
 	IGEDI iGedi = null;	
 	IPRNTR iprntr;
+	Activity Atividade;
 	
 	protected void onCreate( Bundle savedInstanceState ) 
 	{
 		super.onCreate( savedInstanceState );
-		GEDI.init( gedi.this );
+		Atividade = new Activity( );
+		GEDI.init( this );
+		iGedi = GEDI.getInstance( this );
 	}
 
     public boolean execute( String action, JSONArray args, CallbackContext callbackContext ) throws JSONException 
@@ -79,9 +82,7 @@ public class gedi extends CordovaPlugin
 			{
 				@Override
 				public void run( ) 
-				{
-					   iGedi = GEDI.getInstance( gedi.this );
-					   
+				{				   
 					   IPRNTR iPrntr = iGedi.getPRNTR( );
 
 					   tPRNTR.DrawString( gedi.this, iPrntr, "CENTER", 0, 0, "NORMAL", false, false, false, 17, texto );
