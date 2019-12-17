@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.os.Bundle;
 
 import br.com.gertec.gedi.GEDI;
 import br.com.gertec.gedi.enums.GEDI_PRNTR_e_Alignment;
@@ -84,11 +85,11 @@ public class gedi extends CordovaPlugin
 							   true, false, false, 20, "SENHA: " + Integer.toString(senha) );
 
 					   tPRNTR.DrawBlankLine(140, iPrntr);*/
-					   this.callbackContext.success( texto );
+					   //this.callbackContext.success( texto );
 					} catch ( Exception ex )
 					{
 						ex.printStackTrace( );
-						this.callback.error( ex.getMessage( ) );
+						//this.callback.error( ex.getMessage( ) );
 					}
 				}
 			};
