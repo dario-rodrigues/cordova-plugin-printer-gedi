@@ -1,5 +1,5 @@
 var exec = require('cordova/exec');
 
-exports.coolMethod = function (arg0, success, error) {
-    exec(success, error, 'gedi', 'coolMethod', [arg0]);
+exports.print = function (arg0, success, error) {
+    exec(success, error, 'gedi', 'print', [arg0]);
 };
