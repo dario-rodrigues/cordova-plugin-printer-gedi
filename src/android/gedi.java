@@ -28,11 +28,11 @@ public class gedi extends CordovaPlugin
 	private IGEDI iGedi = null;	
 	private Activity Atividade;
 
-     protected void onCreate( Bundle savedInstanceState ) 
-	 {
+    protected void onCreate( Bundle savedInstanceState ) 
+	{
          super.onCreate( savedInstanceState );
          Atividade = new Activity( this );
-     }
+    }
 
     @Override
     public boolean execute( String action, JSONArray args, CallbackContext callbackContext ) throws JSONException 
@@ -84,11 +84,11 @@ public class gedi extends CordovaPlugin
 							   true, false, false, 20, "SENHA: " + Integer.toString(senha) );
 
 					   tPRNTR.DrawBlankLine(140, iPrntr);*/
-					   callbackContext.success( texto );
+					   this.callbackContext.success( texto );
 					} catch ( Exception ex )
 					{
 						ex.printStackTrace( );
-						callback.error( ex.getMessage( ) );
+						this.callback.error( ex.getMessage( ) );
 					}
 				}
 			};
