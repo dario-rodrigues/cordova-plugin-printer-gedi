@@ -23,7 +23,7 @@ import br.com.gertec.gedi.structs.GEDI_PRNTR_st_StringConfig;
 /**
  * This class echoes a string called from JavaScript.
  */
-public class gedi extends CordovaPlugin 
+public class gedi extends Activity 
 {
 	private IGEDI iGedi = null;
 
@@ -51,11 +51,11 @@ public class gedi extends CordovaPlugin
 				{
 					try 
 					{
-					   iGedi = GEDI.getInstance( Activity.getApplicationContext( ) );
+					   iGedi = GEDI.getInstance( getApplicationContext( ) );
 					   
 					   IPRNTR iPrntr = iGedi.getPRNTR( );
 
-					   tPRNTR.DrawString( Activity.getApplicationContext( ), iPrntr, "CENTER", 0, 0, "NORMAL", false, false, false, 17, texto );
+					   tPRNTR.DrawString( getApplicationContext( ), iPrntr, "CENTER", 0, 0, "NORMAL", false, false, false, 17, texto );
 
 					   /*tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
 							   true, false, false, 17, "______________________________________");
