@@ -8,7 +8,31 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
 
 import br.com.gertec.gedi.GEDI;
 import br.com.gertec.gedi.enums.GEDI_PRNTR_e_Alignment;
@@ -26,7 +50,14 @@ import br.com.gertec.gedi.structs.GEDI_PRNTR_st_StringConfig;
  */
 public class gedi extends CordovaPlugin 
 {
-	private IGEDI iGedi = null;	
+	IGEDI iGedi = null;	
+	IPRNTR iprntr;
+	
+	protected void onCreate( Bundle savedInstanceState ) 
+	{
+		super.onCreate( savedInstanceState );
+		GEDI.init( this );
+	}
 
     public boolean execute( String action, JSONArray args, CallbackContext callbackContext ) throws JSONException 
 	{
@@ -49,13 +80,11 @@ public class gedi extends CordovaPlugin
 				@Override
 				public void run( ) 
 				{
-					   GEDI.init( null );	
-					
-					   iGedi = GEDI.getInstance( null );
+					   iGedi = GEDI.getInstance( Printer.this );
 					   
 					   IPRNTR iPrntr = iGedi.getPRNTR( );
 
-					   tPRNTR.DrawString( null, iPrntr, "CENTER", 0, 0, "NORMAL", false, false, false, 17, texto );
+					   tPRNTR.DrawString( Printer.this, iPrntr, "CENTER", 0, 0, "NORMAL", false, false, false, 17, texto );
 
 					   /*tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
 							   true, false, false, 17, "______________________________________");
