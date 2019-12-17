@@ -64,8 +64,8 @@ import br.com.gertec.gedi.structs.GEDI_PRNTR_st_PictureConfig;
 import br.com.gertec.gedi.structs.GEDI_PRNTR_st_StringConfig;
 
 public class Printer extends Activity {
-
-    private IGEDI iGedi = null;
+    IGEDI iGedi = null;
+    IPRNTR iprntr;
 	
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 		if(action.equals("print")) {
@@ -75,17 +75,19 @@ public class Printer extends Activity {
         return true;
     }
 
-    private void print (final String viaCliente) {
+    private void print (JSONArray args) {
         Thread t = new Thread(){
          @Override
          public void run() {
             try {
+			   GEDI.init(getApplicationContext());
+			   
 			   iGedi = GEDI.getInstance(getApplicationContext());
 			   
                IPRNTR iPrntr = iGedi.getPRNTR();
 
                tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
-                       false, false, false, 17, viaCliente);
+                       false, false, false, 17, args.text);
 
                /*tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
                        true, false, false, 17, "______________________________________");
