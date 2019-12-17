@@ -33,7 +33,7 @@ public class gedi extends CordovaPlugin
         if ( action.equals( "print" ) ) 
 		{
             String texto = args.getString( 0 );
-            this.printer.print( texto, callbackContext );
+            this.print( texto, callbackContext );
             return true;
         }
 		
