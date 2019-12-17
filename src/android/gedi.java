@@ -88,7 +88,7 @@ public class gedi extends Activity
 			} catch ( Exception ex )
 			{
 				ex.printStackTrace( );
-				callback.error( ex.getMessage( ) );
+				callbackContext.error( ex.getMessage( ) );
 			}		
         } else 
 		{
