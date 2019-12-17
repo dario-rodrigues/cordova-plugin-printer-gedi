@@ -1,0 +1,25 @@
+{
+  "name": "cordova-plugin-printer-gedi",
+  "version": "0.0.1",
+  "description": "Cordova plugin to print documents using SDK GEDI.",
+  "cordova": {
+    "id": "cordova-plugin-printer-gedi",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dario-rodrigues/cordova-plugin-printer-gedi.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "Dario Rodrigues",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/dario-rodrigues/cordova-plugin-printer-gedi/issues"
+  },
+  "homepage": "https://github.com/dario-rodrigues/cordova-plugin-printer-gedi#readme"
+}
