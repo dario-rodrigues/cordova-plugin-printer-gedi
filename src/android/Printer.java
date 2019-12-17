@@ -87,7 +87,7 @@ public class Printer extends Activity {
                IPRNTR iPrntr = iGedi.getPRNTR();
 
                tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
-                       false, false, false, 17, args.text);
+                       false, false, false, 17, args.getJSONObject(0).getString("text"));
 
                /*tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
                        true, false, false, 17, "______________________________________");
