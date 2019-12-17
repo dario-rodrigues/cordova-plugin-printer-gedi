@@ -48,9 +48,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Locale;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONException;
 
 import br.com.gertec.gedi.GEDI;
 import br.com.gertec.gedi.enums.GEDI_PRNTR_e_Alignment;
@@ -63,16 +63,19 @@ import br.com.gertec.gedi.structs.GEDI_PRNTR_st_BarCodeConfig;
 import br.com.gertec.gedi.structs.GEDI_PRNTR_st_PictureConfig;
 import br.com.gertec.gedi.structs.GEDI_PRNTR_st_StringConfig;
 
-import br.com.gertec.gedi.GEDI;
-import br.com.gertec.gedi.enums.GEDI_PRNTR_e_BarCodeType;
-import br.com.gertec.gedi.interfaces.IGEDI;
-import br.com.gertec.gedi.interfaces.IPRNTR;
-
 public class Printer extends Activity {
 
     private IGEDI iGedi = null;
+	
+	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+		if(action.equals("print")) {
+			this.print(args);
+		}
 
-    public void print (final String viaCliente) {
+        return true;
+    }
+
+    private void print (final String viaCliente) {
         Thread t = new Thread(){
          @Override
          public void run() {
