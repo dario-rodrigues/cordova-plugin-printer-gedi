@@ -9,7 +9,7 @@
 	<platform name="android">
 		<config-file parent="/*" target="res/xml/config.xml">
 			<feature name="gedi">
-				<param name="android-package" value="cordova-plugin-printer-gedi.gedi" />
+				<param name="android-package" value="cordova.plugin.printer.gedi.gedi" />
 			</feature>
 		</config-file>
 		
