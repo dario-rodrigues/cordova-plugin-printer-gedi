@@ -1,4 +1,4 @@
-package cordova-plugin-printer-gedi;
+package cordova.plugin.printer.gedi;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
