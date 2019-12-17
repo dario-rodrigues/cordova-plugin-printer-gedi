@@ -25,7 +25,14 @@ import br.com.gertec.gedi.structs.GEDI_PRNTR_st_StringConfig;
  */
 public class gedi extends CordovaPlugin 
 {
-	private IGEDI iGedi = null;
+	private IGEDI iGedi = null;	
+	private Activity Atividade;
+
+     protected void onCreate( Bundle savedInstanceState ) 
+	 {
+         super.onCreate( savedInstanceState );
+         Atividade = new Activity( this );
+     }
 
     @Override
     public boolean execute( String action, JSONArray args, CallbackContext callbackContext ) throws JSONException 
@@ -39,60 +46,57 @@ public class gedi extends CordovaPlugin
 		
         return false;
     }
-	
-	public class printer extends Activity 
-    {
-		private void print( String texto, CallbackContext callbackContext ) 
+
+    private void print( String texto, CallbackContext callbackContext ) 
+	{
+        if ( texto != null && texto.length( ) > 0 ) 
 		{
-			if ( texto != null && texto.length( ) > 0 ) 
+			Thread t = new Thread( ) 
 			{
-				Thread t = new Thread( ) 
+				@Override
+				public void run( ) 
 				{
-					@Override
-					public void run( ) 
+					try 
 					{
-						try 
-						{
-						   iGedi = GEDI.getInstance( getApplicationContext( ) );
-						   
-						   IPRNTR iPrntr = iGedi.getPRNTR( );
+					   iGedi = GEDI.getInstance( Atividade.getApplicationContext( ) );
+					   
+					   IPRNTR iPrntr = iGedi.getPRNTR( );
 
-						   tPRNTR.DrawString( getApplicationContext( ), iPrntr, "CENTER", 0, 0, "NORMAL", false, false, false, 17, texto );
+					   tPRNTR.DrawString( Atividade.getApplicationContext( ), iPrntr, "CENTER", 0, 0, "NORMAL", false, false, false, 17, texto );
 
-						   /*tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
-								   true, false, false, 17, "______________________________________");
+					   /*tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
+							   true, false, false, 17, "______________________________________");
 
-						   tPRNTR.DrawBlankLine(10, iPrntr);
+					   tPRNTR.DrawBlankLine(10, iPrntr);
 
-						   tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
-								   true, false, false, 17, pedidoComprovante);
+					   tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
+							   true, false, false, 17, pedidoComprovante);
 
-						   tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
-								   true, false, false, 17, getResources().getString(R.string.nota));
+					   tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
+							   true, false, false, 17, getResources().getString(R.string.nota));
 
-						   tPRNTR.DrawBarCode( iPrntr, GEDI_PRNTR_e_BarCodeType.QR_CODE, 300, 300, "www.ger7.com.br" );
+					   tPRNTR.DrawBarCode( iPrntr, GEDI_PRNTR_e_BarCodeType.QR_CODE, 300, 300, "www.ger7.com.br" );
 
-						   Random rn = new Random();
-						   int senha = rn.nextInt(1000) + 1;
+					   Random rn = new Random();
+					   int senha = rn.nextInt(1000) + 1;
 
-						   tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
-								   true, false, false, 20, "SENHA: " + Integer.toString(senha) );
+					   tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
+							   true, false, false, 20, "SENHA: " + Integer.toString(senha) );
 
-						   tPRNTR.DrawBlankLine(140, iPrntr);*/
-						   callbackContext.success( texto );
-						} catch ( Exception ex )
-						{
-							ex.printStackTrace( );
-							callback.error( ex.getMessage( ) );
-						}
+					   tPRNTR.DrawBlankLine(140, iPrntr);*/
+					   callbackContext.success( texto );
+					} catch ( Exception ex )
+					{
+						ex.printStackTrace( );
+						callback.error( ex.getMessage( ) );
 					}
-				};
-				
-				t.start( );            
-			} else 
-			{
-				callbackContext.error( "Texto invalido para impressao." );
-			}
-		}
-	}
+				}
+			};
+			
+			t.start( );            
+        } else 
+		{
+            callbackContext.error( "Texto invalido para impressao." );
+        }
+    }
 }
