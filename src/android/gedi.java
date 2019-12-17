@@ -28,7 +28,6 @@ public class gedi extends Activity
 {
 	private IGEDI iGedi = null;	
 
-    @Override
     public boolean execute( String action, JSONArray args, CallbackContext callbackContext ) throws JSONException 
 	{
         if ( action.equals( "print" ) ) 
@@ -50,8 +49,7 @@ public class gedi extends Activity
 				@Override
 				public void run( ) 
 				{
-					try 
-					{
+					
 					   iGedi = GEDI.getInstance( getApplicationContext( ) );
 					   
 					   IPRNTR iPrntr = iGedi.getPRNTR( );
@@ -79,15 +77,19 @@ public class gedi extends Activity
 
 					   tPRNTR.DrawBlankLine(140, iPrntr);*/
 					   //this.callbackContext.success( texto );
-					} catch ( Exception ex )
-					{
-						ex.printStackTrace( );
-						//this.callback.error( ex.getMessage( ) );
-					}
+					
 				}
 			};
 			
-			t.start( );            
+			try 
+			{
+				t.start( );
+				callbackContext.success( texto )
+			} catch ( Exception ex )
+			{
+				ex.printStackTrace( );
+				callback.error( ex.getMessage( ) );
+			}		
         } else 
 		{
             callbackContext.error( "Texto invalido para impressao." );
