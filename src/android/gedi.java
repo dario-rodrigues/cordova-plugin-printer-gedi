@@ -49,6 +49,7 @@ public class gedi extends CordovaPlugin
 				@Override
 				public void run( ) 
 				{
+					   GEDI.init(this);	
 					
 					   iGedi = GEDI.getInstance( null );
 					   
