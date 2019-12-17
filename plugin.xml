@@ -7,6 +7,9 @@
 	</js-module>
 	
 	<platform name="android">
+	    <framework src="src/android/build.gradle" custom="true" type="gradleReference"/>
+        <lib-file src="src/android/payment-1.14.10.181016.aar"/>
+		
 		<config-file parent="/*" target="res/xml/config.xml">
 			<feature name="gedi">
 				<param name="android-package" value="cordova.plugin.printer.gedi.gedi" />
@@ -14,6 +17,7 @@
 		</config-file>
 		
 		<config-file parent="/*" target="AndroidManifest.xml"></config-file>
+		<source-file src="src/android/tPRNTR.java" target-dir="src/cordova/plugin/printer/gedi/gedi" />
 		<source-file src="src/android/gedi.java" target-dir="src/cordova/plugin/printer/gedi/gedi" />
 	</platform>
 </plugin>
