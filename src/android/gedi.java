@@ -57,31 +57,34 @@ public class gedi extends CordovaPlugin
 	{
         if ( action.equals( "printText" ) ) 
 		{            
-            this.printText( args, callbackContext );
+            this.printText( args.getString( 0 ), callbackContext );
             return true;
         }
 		
 		if ( action.equals( "printBarcode" ) ) 
 		{            
-            this.printText( args, callbackContext );
+            this.printText( args.getString( 0 ), callbackContext );
             return true;
         }
 		
         return false;
     }
 
-    private void printText( JSONArray args, CallbackContext callbackContext ) throws JSONException
+    private void printText( String args, CallbackContext callbackContext )
 	{
-		String text     = args.getString( 0 );
-		String position = args.getString( 1 );
-		String font     = args.getString( 2 );
+		String array[ ] = new String[ 8 ];
+        array           = args.split( "#$%" );
+
+		String text     = array[ 0 ];
+		String position = array[ 1 );
+		String font     = array[ 2 );
 		
-		int blankLines = Integer.parseInt( args.getString( 3 ) );
-		int size       = Integer.parseInt( args.getString( 4 ) );
+		int blankLines = Integer.parseInt( array[ 3 ) );
+		int size       = Integer.parseInt( array[ 4 ) );
 		
-		boolean bold      = Boolean.parseBoolean( args.getString( 5 ) ); 
-		boolean italic    = Boolean.parseBoolean( args.getString( 6 ) );
-		boolean underline = Boolean.parseBoolean( args.getString( 7 ) );
+		boolean bold      = Boolean.parseBoolean( array[ 5 ) ); 
+		boolean italic    = Boolean.parseBoolean( array[ 6 ) );
+		boolean underline = Boolean.parseBoolean( array[ 7 ) );
 		
 		String OK = "ok";
 		
@@ -114,12 +117,15 @@ public class gedi extends CordovaPlugin
         }
     }
 	
-	private void printBarcode( JSONArray args, CallbackContext callbackContext ) throws JSONException
+	private void printBarcode( String args, CallbackContext callbackContext )
 	{
-		String text   = args.getString( 0 );
-		String type   = args.getString( 1 );
-		int    height = Integer.parseInt( args.getString( 2 ) );
-		int    width  = Integer.parseInt( args.getString( 3 ) ); 
+		String array[ ] = new String[ 4 ];
+        array           = args.split( "#$%" );
+		
+		String text   = array[ 0 );
+		String type   = array[ 1 );
+		int    height = Integer.parseInt( array[ 2 ) );
+		int    width  = Integer.parseInt( array[ 3 ) ); 
 		
 		String OK = "ok";
 		
