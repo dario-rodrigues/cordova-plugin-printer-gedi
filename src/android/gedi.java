@@ -50,78 +50,80 @@ import br.com.gertec.gedi.structs.GEDI_PRNTR_st_StringConfig;
  */
 public class gedi extends CordovaPlugin 
 {
-	IGEDI iGedi = null;	
-	IPRNTR iprntr;
-	Activity Atividade;
-	
-	public boolean execute( String action, JSONArray args, CallbackContext callbackContext ) throws JSONException 
+	public class gedi_2 extends Activity 
 	{
-        if ( action.equals( "print" ) ) 
-		{
-            String texto = args.getString( 0 );
-            this.print( texto, callbackContext );
-            return true;
-        }
+		IGEDI iGedi = null;	
+		IPRNTR iprntr;
 		
-        return false;
-    }
-
-    private void print( String texto, CallbackContext callbackContext ) 
-	{
-        if ( texto != null && texto.length( ) > 0 ) 
+		public boolean execute( String action, JSONArray args, CallbackContext callbackContext ) throws JSONException 
 		{
-			Thread t = new Thread( ) 
+			if ( action.equals( "print" ) ) 
 			{
-				@Override
-				public void run( ) 
-				{
-					   Atividade = new Activity( );
-					   
-					   GEDI.init( null );
-					   
-					   //iGedi = GEDI.getInstance( Atividade.getApplicationContext( ) );
-					   
-					   //IPRNTR iPrntr = iGedi.getPRNTR( );
-
-					   //tPRNTR.DrawString( Atividade.getApplicationContext( ), iPrntr, "CENTER", 0, 0, "NORMAL", false, false, false, 17, texto );
-
-					   /*tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
-							   true, false, false, 17, "______________________________________");
-
-					   tPRNTR.DrawBlankLine(10, iPrntr);
-
-					   tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
-							   true, false, false, 17, pedidoComprovante);
-
-					   tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
-							   true, false, false, 17, getResources().getString(R.string.nota));
-
-					   tPRNTR.DrawBarCode( iPrntr, GEDI_PRNTR_e_BarCodeType.QR_CODE, 300, 300, "www.ger7.com.br" );
-
-					   Random rn = new Random();
-					   int senha = rn.nextInt(1000) + 1;
-
-					   tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
-							   true, false, false, 20, "SENHA: " + Integer.toString(senha) );
-
-					   tPRNTR.DrawBlankLine(140, iPrntr);*/
-					   //this.callbackContext.success( texto );
-					
-				}
-			};
+				String texto = args.getString( 0 );
+				this.print( texto, callbackContext );
+				return true;
+			}
 			
-			try 
-			{
-				t.start( );
-				callbackContext.success( texto );
-			} catch ( Exception ex )
-			{
-				ex.printStackTrace( );
-				callbackContext.error( ex.getMessage( ) );
-			}		
-        } else 
+			return false;
+		}
+
+		private void print( String texto, CallbackContext callbackContext ) 
 		{
-            callbackContext.error( "Texto invalido para impressao." );
-        }
-    }
+			if ( texto != null && texto.length( ) > 0 ) 
+			{
+				Thread t = new Thread( ) 
+				{
+					@Override
+					public void run( ) 
+					{
+						   //Atividade = new Activity( );
+						   
+						   //GEDI.init( null );
+						   
+						   //iGedi = GEDI.getInstance( Atividade.getApplicationContext( ) );
+						   
+						   //IPRNTR iPrntr = iGedi.getPRNTR( );
+
+						   //tPRNTR.DrawString( Atividade.getApplicationContext( ), iPrntr, "CENTER", 0, 0, "NORMAL", false, false, false, 17, texto );
+
+						   /*tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
+								   true, false, false, 17, "______________________________________");
+
+						   tPRNTR.DrawBlankLine(10, iPrntr);
+
+						   tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
+								   true, false, false, 17, pedidoComprovante);
+
+						   tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
+								   true, false, false, 17, getResources().getString(R.string.nota));
+
+						   tPRNTR.DrawBarCode( iPrntr, GEDI_PRNTR_e_BarCodeType.QR_CODE, 300, 300, "www.ger7.com.br" );
+
+						   Random rn = new Random();
+						   int senha = rn.nextInt(1000) + 1;
+
+						   tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
+								   true, false, false, 20, "SENHA: " + Integer.toString(senha) );
+
+						   tPRNTR.DrawBlankLine(140, iPrntr);*/
+						   //this.callbackContext.success( texto );
+						
+					}
+				};
+				
+				try 
+				{
+					t.start( );
+					callbackContext.success( texto );
+				} catch ( Exception ex )
+				{
+					ex.printStackTrace( );
+					callbackContext.error( ex.getMessage( ) );
+				}		
+			} else 
+			{
+				callbackContext.error( "Texto invalido para impressao." );
+			}
+		}
+	}
 }
