@@ -80,7 +80,7 @@ public class gedi extends CordovaPlugin
 					   
 					   IPRNTR iPrntr = iGedi.getPRNTR( );
 
-					   tPRNTR.DrawString( Atividade.getApplicationContext( ), iPrntr, "CENTER", 0, 0, "NORMAL", false, false, false, 17, texto );
+					   tPRNTR.DrawString( cordova.getActivity( ).getApplicationContext( ), iPrntr, "CENTER", 0, 0, "NORMAL", false, false, false, 17, texto );
 
 					   /*tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
 							   true, false, false, 17, "______________________________________");
