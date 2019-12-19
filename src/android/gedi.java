@@ -74,7 +74,7 @@ public class gedi extends CordovaPlugin
 				@Override
 				public void run( ) 
 				{
-					   //Atividade = new Activity( );
+					   Activity Atividade = new Activity( );
 					   
 					   //GEDI.init( Activity.getApplicationContext( ) );
 					   
