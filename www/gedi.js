@@ -1,5 +1,11 @@
-var exec = require('cordova/exec');
+var exec = require( 'cordova/exec' );
 
-exports.print = function (arg0, success, error) {
-    exec(success, error, 'gedi', 'print', [arg0]);
+exports.printText = function ( arg0, success, error ) 
+{
+    exec( success, error, 'gedi', 'printText', [ arg0 ] );
+};
+
+exports.printBarcode = function ( arg0, success, error ) 
+{
+    exec( success, error, 'gedi', 'printBarcode', [ arg0 ] );
 };
