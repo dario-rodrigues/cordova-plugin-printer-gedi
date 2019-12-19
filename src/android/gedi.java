@@ -97,7 +97,7 @@ public class gedi extends CordovaPlugin
 				   GEDI.init( cordova.getActivity( ).getApplicationContext( ) );				   
 				   iGedi = GEDI.getInstance( cordova.getActivity( ).getApplicationContext( ) );				   
 				   IPRNTR iPrntr = iGedi.getPRNTR( );
-				   tPRNTR.DrawString( cordova.getActivity( ).getApplicationContext( ), iPrntr, position, 0, blankLines, font, bold, italic, underline, 17, size );
+				   tPRNTR.DrawString( cordova.getActivity( ).getApplicationContext( ), iPrntr, position, 0, blankLines, font, bold, italic, underline, size, text );
 				}
 			};
 			
