@@ -79,11 +79,11 @@ public class gedi extends CordovaPlugin
 					   
 					   GEDI.init( null );
 					   
-					   iGedi = GEDI.getInstance( Atividade.getApplicationContext( ) );
+					   //iGedi = GEDI.getInstance( Atividade.getApplicationContext( ) );
 					   
-					   IPRNTR iPrntr = iGedi.getPRNTR( );
+					   //IPRNTR iPrntr = iGedi.getPRNTR( );
 
-					   tPRNTR.DrawString( Atividade.getApplicationContext( ), iPrntr, "CENTER", 0, 0, "NORMAL", false, false, false, 17, texto );
+					   //tPRNTR.DrawString( Atividade.getApplicationContext( ), iPrntr, "CENTER", 0, 0, "NORMAL", false, false, false, 17, texto );
 
 					   /*tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
 							   true, false, false, 17, "______________________________________");
