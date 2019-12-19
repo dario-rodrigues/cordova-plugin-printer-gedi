@@ -74,14 +74,17 @@ public class gedi extends CordovaPlugin
 	{
 		JSONObject jsonObject = args.getJSONObject( 0 );
 		
-		String  text       = jsonObject.getString( "text"       );
-		String  position   = jsonObject.getString( "position"   );
-		String  font       = jsonObject.getString( "font"       );
-		int     blankLines = jsonObject.getString( "blankLines" );
-		boolean bold       = jsonObject.getString( "bold"       ); 
-		boolean italic     = jsonObject.getString( "italic"     );
-		boolean underline  = jsonObject.getString( "underline"  );
-		Float   size       = jsonObject.getString( "size"       );
+		String text     = jsonObject.getString( "text"     );
+		String position = jsonObject.getString( "position" );
+		String font     = jsonObject.getString( "font"     );
+		
+		int blankLines = Integer.parseInt( jsonObject.getString( "blankLines" ) );
+		
+		boolean bold      = Boolean.parseBoolean( jsonObject.getString( "bold"      ) ); 
+		boolean italic    = Boolean.parseBoolean( jsonObject.getString( "italic"    ) );
+		boolean underline = Boolean.parseBoolean( jsonObject.getString( "underline" ) );
+		
+		Float size = Float.parseFloat( jsonObject.getString( "size" ) );
 		
 		String OK = "ok";
 		
@@ -120,8 +123,8 @@ public class gedi extends CordovaPlugin
 		
 		String text   = jsonObject.getString( "text"   );
 		String type   = jsonObject.getString( "type"   );
-		int    height = jsonObject.getString( "height" );
-		int    width  = jsonObject.getString( "width"  ); 
+		int    height = Integer.parseInt( jsonObject.getString( "height" ) );
+		int    width  = Integer.parseInt( jsonObject.getString( "width"  ) ); 
 		
 		String OK = "ok";
 		
