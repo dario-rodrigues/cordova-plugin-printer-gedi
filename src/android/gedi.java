@@ -76,7 +76,7 @@ public class gedi extends CordovaPlugin
 				{
 					   //Atividade = new Activity( );
 					   
-					   GEDI.init( Activity.getApplicationContext( ) );
+					   //GEDI.init( Activity.getApplicationContext( ) );
 					   
 					   //iGedi = GEDI.getInstance( Atividade.getApplicationContext( ) );
 					   
