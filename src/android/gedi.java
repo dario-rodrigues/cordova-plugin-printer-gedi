@@ -72,7 +72,9 @@ public class gedi extends CordovaPlugin
 
     private void printText( String args, CallbackContext callbackContext )
 	{
-		String array[ ] = new String[ 8 ];
+		callbackContext.success( args );
+		
+		/*String array[ ] = new String[ 8 ];
         array           = args.split( "#$%" );
 
 		String text     = array[ 0 ];
@@ -110,7 +112,7 @@ public class gedi extends CordovaPlugin
 			{
 				ex.printStackTrace( );
 				callbackContext.error( ex.getMessage( ) );
-			}		
+			}*/		
         } else 
 		{
             callbackContext.error( "Texto invalido para impressao." );
