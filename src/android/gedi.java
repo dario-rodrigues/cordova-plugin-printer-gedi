@@ -72,19 +72,16 @@ public class gedi extends CordovaPlugin
 
     private void printText( JSONArray args, CallbackContext callbackContext ) throws JSONException
 	{
-		JSONObject jsonObject = new JSONObject( );
-		jsonObject = args.getJSONObject( 0 );
+		String text     = args.getString( 0 );
+		String position = args.getString( 1 );
+		String font     = args.getString( 2 );
 		
-		String text     = jsonObject.getString( "text"     );
-		String position = jsonObject.getString( "position" );
-		String font     = jsonObject.getString( "font"     );
+		int blankLines = Integer.parseInt( args.getString( 3 ) );
+		int size       = Integer.parseInt( args.getString( 4 ) );
 		
-		int blankLines = Integer.parseInt( jsonObject.getString( "blankLines" ) );
-		int size       = Integer.parseInt( jsonObject.getString( "size"       ) );
-		
-		boolean bold      = Boolean.parseBoolean( jsonObject.getString( "bold"      ) ); 
-		boolean italic    = Boolean.parseBoolean( jsonObject.getString( "italic"    ) );
-		boolean underline = Boolean.parseBoolean( jsonObject.getString( "underline" ) );
+		boolean bold      = Boolean.parseBoolean( args.getString( 5 ) ); 
+		boolean italic    = Boolean.parseBoolean( args.getString( 6 ) );
+		boolean underline = Boolean.parseBoolean( args.getString( 7 ) );
 		
 		String OK = "ok";
 		
@@ -119,13 +116,10 @@ public class gedi extends CordovaPlugin
 	
 	private void printBarcode( JSONArray args, CallbackContext callbackContext ) throws JSONException
 	{
-		JSONObject jsonObject = new JSONObject( );
-		jsonObject = args.getJSONObject( 0 );
-		
-		String text   = jsonObject.getString( "text"   );
-		String type   = jsonObject.getString( "type"   );
-		int    height = Integer.parseInt( jsonObject.getString( "height" ) );
-		int    width  = Integer.parseInt( jsonObject.getString( "width"  ) ); 
+		String text   = jsonObject.getString( 0 );
+		String type   = jsonObject.getString( 1 );
+		int    height = Integer.parseInt( jsonObject.getString( 2 ) );
+		int    width  = Integer.parseInt( jsonObject.getString( 3 ) ); 
 		
 		String OK = "ok";
 		
