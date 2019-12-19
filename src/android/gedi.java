@@ -75,9 +75,9 @@ public class gedi extends CordovaPlugin
 		String array[ ] = new String[ 8 ];
         array           = args.split( "#$%" );
 		
-		callbackContext.success( array.length( ) );
+		callbackContext.success( array.length );
 
-		String text     = array[ 0 ];
+		/*String text     = array[ 0 ];
 		String position = array[ 1 ];
 		String font     = array[ 2 ];
 		
@@ -88,7 +88,7 @@ public class gedi extends CordovaPlugin
 		boolean italic    = Boolean.parseBoolean( array[ 6 ] );
 		boolean underline = Boolean.parseBoolean( array[ 7 ] );
 		
-		String OK = "ok";/*
+		String OK = "ok";
 		
         if ( text != null && text.length( ) > 0 ) 
 		{
