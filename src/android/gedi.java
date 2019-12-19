@@ -79,12 +79,11 @@ public class gedi extends CordovaPlugin
 		String font     = jsonObject.getString( "font"     );
 		
 		int blankLines = Integer.parseInt( jsonObject.getString( "blankLines" ) );
+		int size       = Integer.parseInt( jsonObject.getString( "size"       ) );
 		
 		boolean bold      = Boolean.parseBoolean( jsonObject.getString( "bold"      ) ); 
 		boolean italic    = Boolean.parseBoolean( jsonObject.getString( "italic"    ) );
 		boolean underline = Boolean.parseBoolean( jsonObject.getString( "underline" ) );
-		
-		Float size = Float.parseFloat( jsonObject.getString( "size" ) );
 		
 		String OK = "ok";
 		
