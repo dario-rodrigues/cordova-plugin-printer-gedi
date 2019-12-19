@@ -55,62 +55,161 @@ public class gedi extends CordovaPlugin
 	
 	public boolean execute( String action, JSONArray args, CallbackContext callbackContext ) throws JSONException 
 	{
-        if ( action.equals( "print" ) ) 
-		{
-            String texto = args.getString( 0 );
-            this.print( texto, callbackContext );
+        if ( action.equals( "printText" ) ) 
+		{            
+            this.printText( args, callbackContext );
+            return true;
+        }
+		
+		if ( action.equals( "printBarcode" ) ) 
+		{            
+            this.printText( args, callbackContext );
             return true;
         }
 		
         return false;
     }
 
-    private void print( String texto, CallbackContext callbackContext ) 
+    private void printText( JSONArray args, CallbackContext callbackContext ) 
 	{
-        if ( texto != null && texto.length( ) > 0 ) 
+		JSONObject jsonObject = args.getJSONObject( 0 );
+		
+		String  text       = jsonObject.getString( "text"       );
+		String  position   = jsonObject.getString( "position"   );
+		String  font       = jsonObject.getString( "font"       );
+		int     blankLines = jsonObject.getString( "blankLines" );
+		boolean bold       = jsonObject.getString( "bold"       ); 
+		boolean italic     = jsonObject.getString( "italic"     );
+		boolean underline  = jsonObject.getString( "underline"  );
+		Float   size       = jsonObject.getString( "size"       );
+		
+        if ( text != null && text.length( ) > 0 ) 
 		{
 			Thread t = new Thread( ) 
 			{
 				@Override
 				public void run( ) 
 				{
-					   GEDI.init( cordova.getActivity( ).getApplicationContext( ) );
-					   
-					   iGedi = GEDI.getInstance( cordova.getActivity( ).getApplicationContext( ) );
-					   
-					   IPRNTR iPrntr = iGedi.getPRNTR( );
-
-					   tPRNTR.DrawString( cordova.getActivity( ).getApplicationContext( ), iPrntr, "CENTER", 0, 0, "NORMAL", false, false, false, 17, texto );
-
-					   /*tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
-							   true, false, false, 17, "______________________________________");
-
-					   tPRNTR.DrawBlankLine(10, iPrntr);
-
-					   tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
-							   true, false, false, 17, pedidoComprovante);
-
-					   tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
-							   true, false, false, 17, getResources().getString(R.string.nota));
-
-					   tPRNTR.DrawBarCode( iPrntr, GEDI_PRNTR_e_BarCodeType.QR_CODE, 300, 300, "www.ger7.com.br" );
-
-					   Random rn = new Random();
-					   int senha = rn.nextInt(1000) + 1;
-
-					   tPRNTR.DrawString(getApplicationContext(), iPrntr, "CENTER", 0, 0, "NORMAL",
-							   true, false, false, 20, "SENHA: " + Integer.toString(senha) );
-
-					   tPRNTR.DrawBlankLine(140, iPrntr);*/
-					   //this.callbackContext.success( texto );
-					
+				   GEDI.init( cordova.getActivity( ).getApplicationContext( ) );				   
+				   iGedi = GEDI.getInstance( cordova.getActivity( ).getApplicationContext( ) );				   
+				   IPRNTR iPrntr = iGedi.getPRNTR( );
+				   tPRNTR.DrawString( cordova.getActivity( ).getApplicationContext( ), iPrntr, position, 0, blankLines, font, bold, italic, underline, 17, size );
 				}
 			};
 			
 			try 
 			{
 				t.start( );
-				callbackContext.success( texto );
+				callbackContext.success( 'OK' );
+			} catch ( Exception ex )
+			{
+				ex.printStackTrace( );
+				callbackContext.error( ex.getMessage( ) );
+			}		
+        } else 
+		{
+            callbackContext.error( "Texto invalido para impressao." );
+        }
+    }
+	
+	private void printBarcode( JSONArray args, CallbackContext callbackContext ) 
+	{
+		JSONObject jsonObject = args.getJSONObject( 0 );
+		
+		String text   = jsonObject.getString( "text"   );
+		String type   = jsonObject.getString( "type"   );
+		int    height = jsonObject.getString( "height" );
+		int    width  = jsonObject.getString( "width"  ); 
+		
+        if ( text != null && text.length( ) > 0 ) 
+		{
+			Thread t = new Thread( ) 
+			{
+				@Override
+				public void run( ) 
+				{
+				   GEDI.init( cordova.getActivity( ).getApplicationContext( ) );				   
+				   iGedi = GEDI.getInstance( cordova.getActivity( ).getApplicationContext( ) );				   
+				   IPRNTR iPrntr = iGedi.getPRNTR( );
+				   
+				   switch ( type )
+				   {
+					    case "AZTEC":
+							tPRNTR.DrawBarCode( iPrntr, GEDI_PRNTR_e_BarCodeType.AZTEC, height, width, text );
+							break;
+						  
+						case "CODABAR":
+							tPRNTR.DrawBarCode( iPrntr, GEDI_PRNTR_e_BarCodeType.CODABAR, height, width, text );
+							break;
+						  
+						case "CODE_128":
+							tPRNTR.DrawBarCode( iPrntr, GEDI_PRNTR_e_BarCodeType.CODE_128, height, width, text );
+							break;
+						  
+						case "CODE_39":
+							tPRNTR.DrawBarCode( iPrntr, GEDI_PRNTR_e_BarCodeType.CODE_39, height, width, text );
+							break;
+						  
+						case "CODE_93":
+							tPRNTR.DrawBarCode( iPrntr, GEDI_PRNTR_e_BarCodeType.CODE_93, height, width, text );
+							break;
+						  
+						case "DATA_MATRIX":
+							tPRNTR.DrawBarCode( iPrntr, GEDI_PRNTR_e_BarCodeType.DATA_MATRIX, height, width, text );
+							break;
+						  
+						case "EAN_13":
+							tPRNTR.DrawBarCode( iPrntr, GEDI_PRNTR_e_BarCodeType.EAN_13, height, width, text );
+							break;
+						  
+						case "EAN_8":
+							tPRNTR.DrawBarCode( iPrntr, GEDI_PRNTR_e_BarCodeType.EAN_8, height, width, text );
+							break;
+						  
+						case "ITF":
+							tPRNTR.DrawBarCode( iPrntr, GEDI_PRNTR_e_BarCodeType.ITF, height, width, text );
+							break;
+						  
+						case "MAXICODE":
+							tPRNTR.DrawBarCode( iPrntr, GEDI_PRNTR_e_BarCodeType.MAXICODE, height, width, text );
+							break;
+						  
+						case "PDF_417":						
+							tPRNTR.DrawBarCode( iPrntr, GEDI_PRNTR_e_BarCodeType.PDF_417, height, width, text );
+							break;
+						  
+						case "RSS_14":
+							tPRNTR.DrawBarCode( iPrntr, GEDI_PRNTR_e_BarCodeType.RSS_14, height, width, text );
+							break;
+						  
+						case "RSS_EXPANDED":
+							tPRNTR.DrawBarCode( iPrntr, GEDI_PRNTR_e_BarCodeType.RSS_EXPANDED, height, width, text );
+							break;
+						  
+						case "UPC_A":
+							tPRNTR.DrawBarCode( iPrntr, GEDI_PRNTR_e_BarCodeType.UPC_A, height, width, text );
+							break;
+						  
+						case "UPC_E":
+							tPRNTR.DrawBarCode( iPrntr, GEDI_PRNTR_e_BarCodeType.UPC_E, height, width, text );
+							break;
+						  
+						case "UPC_EAN_EXTENSION":
+							tPRNTR.DrawBarCode( iPrntr, GEDI_PRNTR_e_BarCodeType.UPC_EAN_EXTENSION, height, width, text );
+							break;
+						  
+						default:
+							tPRNTR.DrawBarCode( iPrntr, GEDI_PRNTR_e_BarCodeType.QR_CODE, height, width, text );
+							break;
+						  
+				   }
+				}
+			};
+			
+			try 
+			{
+				t.start( );
+				callbackContext.success( 'OK' );
 			} catch ( Exception ex )
 			{
 				ex.printStackTrace( );
