@@ -70,7 +70,7 @@ public class gedi extends CordovaPlugin
         return false;
     }
 
-    private void printText( JSONArray args, CallbackContext callbackContext ) 
+    private void printText( JSONArray args, CallbackContext callbackContext ) throws JSONObject
 	{
 		JSONObject jsonObject = args.getJSONObject( 0 );
 		
@@ -116,7 +116,7 @@ public class gedi extends CordovaPlugin
         }
     }
 	
-	private void printBarcode( JSONArray args, CallbackContext callbackContext ) 
+	private void printBarcode( JSONArray args, CallbackContext callbackContext ) throws JSONObject
 	{
 		JSONObject jsonObject = args.getJSONObject( 0 );
 		
