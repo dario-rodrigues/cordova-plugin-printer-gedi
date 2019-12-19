@@ -83,6 +83,8 @@ public class gedi extends CordovaPlugin
 		boolean underline  = jsonObject.getString( "underline"  );
 		Float   size       = jsonObject.getString( "size"       );
 		
+		String OK = "ok";
+		
         if ( text != null && text.length( ) > 0 ) 
 		{
 			Thread t = new Thread( ) 
@@ -100,7 +102,7 @@ public class gedi extends CordovaPlugin
 			try 
 			{
 				t.start( );
-				callbackContext.success( 'OK' );
+				callbackContext.success( OK );
 			} catch ( Exception ex )
 			{
 				ex.printStackTrace( );
@@ -120,6 +122,8 @@ public class gedi extends CordovaPlugin
 		String type   = jsonObject.getString( "type"   );
 		int    height = jsonObject.getString( "height" );
 		int    width  = jsonObject.getString( "width"  ); 
+		
+		String OK = "ok";
 		
         if ( text != null && text.length( ) > 0 ) 
 		{
@@ -209,7 +213,7 @@ public class gedi extends CordovaPlugin
 			try 
 			{
 				t.start( );
-				callbackContext.success( 'OK' );
+				callbackContext.success( OK );
 			} catch ( Exception ex )
 			{
 				ex.printStackTrace( );
