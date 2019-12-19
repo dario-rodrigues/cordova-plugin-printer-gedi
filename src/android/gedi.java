@@ -72,8 +72,7 @@ public class gedi extends CordovaPlugin
 
     private void printText( String args, CallbackContext callbackContext )
 	{		
-		String array[ ] = new String[ 8 ];
-        array           = args.split( "#$%" );
+		String array[ ] = args.split( "#$%" );
 		
 		callbackContext.success( array.length );
 
