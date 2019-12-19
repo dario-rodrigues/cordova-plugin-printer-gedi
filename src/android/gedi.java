@@ -76,15 +76,15 @@ public class gedi extends CordovaPlugin
         array           = args.split( "#$%" );
 
 		String text     = array[ 0 ];
-		String position = array[ 1 );
-		String font     = array[ 2 );
+		String position = array[ 1 ];
+		String font     = array[ 2 ];
 		
-		int blankLines = Integer.parseInt( array[ 3 ) );
-		int size       = Integer.parseInt( array[ 4 ) );
+		int blankLines = Integer.parseInt( array[ 3 ] );
+		int size       = Integer.parseInt( array[ 4 ] );
 		
-		boolean bold      = Boolean.parseBoolean( array[ 5 ) ); 
-		boolean italic    = Boolean.parseBoolean( array[ 6 ) );
-		boolean underline = Boolean.parseBoolean( array[ 7 ) );
+		boolean bold      = Boolean.parseBoolean( array[ 5 ] ); 
+		boolean italic    = Boolean.parseBoolean( array[ 6 ] );
+		boolean underline = Boolean.parseBoolean( array[ 7 ] );
 		
 		String OK = "ok";
 		
@@ -122,10 +122,10 @@ public class gedi extends CordovaPlugin
 		String array[ ] = new String[ 4 ];
         array           = args.split( "#$%" );
 		
-		String text   = array[ 0 );
-		String type   = array[ 1 );
-		int    height = Integer.parseInt( array[ 2 ) );
-		int    width  = Integer.parseInt( array[ 3 ) ); 
+		String text   = array[ 0 ];
+		String type   = array[ 1 ];
+		int    height = Integer.parseInt( array[ 2 ] );
+		int    width  = Integer.parseInt( array[ 3 ] ); 
 		
 		String OK = "ok";
 		
