@@ -112,11 +112,11 @@ public class gedi extends CordovaPlugin
 			{
 				ex.printStackTrace( );
 				callbackContext.error( ex.getMessage( ) );
-			}*/		
+			}		
         } else 
 		{
             callbackContext.error( "Texto invalido para impressao." );
-        }
+        }*/
     }
 	
 	private void printBarcode( String args, CallbackContext callbackContext )
