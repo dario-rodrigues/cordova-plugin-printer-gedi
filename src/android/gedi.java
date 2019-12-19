@@ -117,7 +117,7 @@ public class gedi extends CordovaPlugin
         }
     }
 	
-	private void printBarcode( JSONArray args, CallbackContext callbackContext ) 
+	private void printBarcode( JSONArray args, CallbackContext callbackContext ) throws JSONException
 	{
 		JSONObject jsonObject = new JSONObject( );
 		jsonObject = args.getJSONObject( 0 );
