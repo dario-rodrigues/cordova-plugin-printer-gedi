@@ -116,10 +116,10 @@ public class gedi extends CordovaPlugin
 	
 	private void printBarcode( JSONArray args, CallbackContext callbackContext ) throws JSONException
 	{
-		String text   = jsonObject.getString( 0 );
-		String type   = jsonObject.getString( 1 );
-		int    height = Integer.parseInt( jsonObject.getString( 2 ) );
-		int    width  = Integer.parseInt( jsonObject.getString( 3 ) ); 
+		String text   = args.getString( 0 );
+		String type   = args.getString( 1 );
+		int    height = Integer.parseInt( args.getString( 2 ) );
+		int    width  = Integer.parseInt( args.getString( 3 ) ); 
 		
 		String OK = "ok";
 		
