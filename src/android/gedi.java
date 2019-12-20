@@ -63,7 +63,7 @@ public class gedi extends CordovaPlugin
 		
 		if ( action.equals( "printBarcode" ) ) 
 		{            
-            this.printText( args.getString( 0 ), callbackContext );
+            this.printBarcode( args.getString( 0 ), callbackContext );
             return true;
         }
 		
