@@ -74,18 +74,16 @@ public class gedi extends CordovaPlugin
 	{		
 		JSONObject json = new JSONObject( args );
 		
-		callbackContext.success( json.getString("text") );
-
-		/*String text     = array[ 0 ];
-		String position = array[ 1 ];
-		String font     = array[ 2 ];
+		String text     = json.getString( "text"     );
+		String position = json.getString( "position" );
+		String font     = json.getString( "font"     );
 		
-		int blankLines = Integer.parseInt( array[ 3 ] );
-		int size       = Integer.parseInt( array[ 4 ] );
+		int blankLines = Integer.parseInt( json.getString( "blankLines" ) );
+		int size       = Integer.parseInt( json.getString( "size"       ) );
 		
-		boolean bold      = Boolean.parseBoolean( array[ 5 ] ); 
-		boolean italic    = Boolean.parseBoolean( array[ 6 ] );
-		boolean underline = Boolean.parseBoolean( array[ 7 ] );
+		boolean bold      = Boolean.parseBoolean( json.getString( "bold"      ) ); 
+		boolean italic    = Boolean.parseBoolean( json.getString( "italic"    ) );
+		boolean underline = Boolean.parseBoolean( json.getString( "underline" ) );
 		
 		String OK = "ok";
 		
@@ -115,18 +113,17 @@ public class gedi extends CordovaPlugin
         } else 
 		{
             callbackContext.error( "Texto invalido para impressao." );
-        }*/
+        }
     }
 	
 	private void printBarcode( String args, CallbackContext callbackContext )
 	{
-		String array[ ] = new String[ 4 ];
-        array           = args.split( "#$%" );
+		JSONObject json = new JSONObject( args );
 		
-		String text   = array[ 0 ];
-		String type   = array[ 1 ];
-		int    height = Integer.parseInt( array[ 2 ] );
-		int    width  = Integer.parseInt( array[ 3 ] ); 
+		String text   = json.getString( "text" );
+		String type   = json.getString( "type" );
+		int    height = Integer.parseInt( json.getString( "height" ) );
+		int    width  = Integer.parseInt( json.getString( "width"  ) ); 
 		
 		String OK = "ok";
 		
