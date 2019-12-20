@@ -72,9 +72,9 @@ public class gedi extends CordovaPlugin
 
     private void printText( String args, CallbackContext callbackContext ) throws JSONException
 	{		
-		JSONArray json = new JSONArray( args );
+		//JSONArray json = new JSONArray( args );
 		
-		callbackContext.success( json.length( ) );
+		callbackContext.success( args );
 
 		/*String text     = array[ 0 ];
 		String position = array[ 1 ];
