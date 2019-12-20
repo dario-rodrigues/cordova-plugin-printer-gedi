@@ -70,11 +70,11 @@ public class gedi extends CordovaPlugin
         return false;
     }
 
-    private void printText( String args, CallbackContext callbackContext )
+    private void printText( String args, CallbackContext callbackContext ) throws JSONException
 	{		
-		String array[ ] = args.split( "#$%" );
+		JSONArray json = new JSONArray( args );
 		
-		callbackContext.success( array.length );
+		callbackContext.success( json.length );
 
 		/*String text     = array[ 0 ];
 		String position = array[ 1 ];
