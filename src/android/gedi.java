@@ -74,7 +74,7 @@ public class gedi extends CordovaPlugin
 	{		
 		JSONArray json = new JSONArray( args );
 		
-		callbackContext.success( json.length );
+		callbackContext.success( json.length( ) );
 
 		/*String text     = array[ 0 ];
 		String position = array[ 1 ];
